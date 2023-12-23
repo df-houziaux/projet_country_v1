@@ -1,0 +1,239 @@
+* {
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime les marges internes par défaut */
+}
+body {
+  font-family: "Rye", serif; /* Défini la police de caractères principale ("Rye" dans ce cas) */
+  font-weight: 500; /* Défini l'épaisseur de la police de caractères (500 pour une police plus épaisse) */
+  font-size: 15px; /* Défini la taille de la police de caractères (15px par défaut) */
+}
+/* Barre de titre */
+.h {
+  text-align: center; /* Aligne le texte au centre de la page */
+  font-family: "Rye", serif; /* Utilise la même police de caractères que le body */
+  margin-bottom: 15px; /* Ajoute un espace de 15px sous la barre de titre */
+  font-size: 25px; /* Défini la taille de la police de caractères (25px) */
+  height: 15px; /* Défini la hauteur de la barre de titre (15px) */
+  margin: 27px 0 40px 0; /* Marges autour de la barre de titre */
+}
+/* Titre principal */
+.titre {
+  position: absolute; /* Positionne le titre de manière absolue */
+  top: 53%; /* Déplace le titre vers le haut de la page (soit 53% de la hauteur de la fenêtre) */
+  left: 50%; /* Centre le titre horizontalement (50% de la largeur de la fenêtre) */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Traduit le titre vers le centre de la page (-50% sur l'axe horizontal et -50% sur l'axe vertical) */
+  color: white; /* Défini la couleur du texte en blanc */
+  font-size: 50px; /* Défini la taille du texte en 50px */
+  font-weight: bold; /* Défini l'épaisseur de la police de caractères en gras */
+  text-align: center; /* Aligne le texte du titre au centre */
+  z-index: 1; /* Définie l'indice Z du titre pour le mettre par-dessus les autres éléments */
+  margin-top: 100px; /* Ajoute un espace de 100px entre la barre de titre et le titre principal */
+  font-family: "Rye", serif; /* Utilise la même police de caractères que le body */
+}
+/* Bloc des liens sociaux */
+.t_social {
+  margin-top: 9px; /* Ajoute un espace de 9px entre le titre principal et le bloc des liens sociaux */
+  margin-bottom: 2px; /* Ajoute un espace de 2px sous le bloc des liens sociaux */
+  margin-left: 95px; /* Marge gauche du bloc des liens sociaux */
+}
+/* En-tête (header) */
+.header {
+  display: flex; /* Affiche les éléments de l'en-tête en Flexbox */
+  align-items: center; /* Centre les éléments horizontalement */
+  justify-content: space-between; /* Répartit les éléments horizontalement avec un espace entre eux */
+  color: white; /* Défini la couleur du texte en blanc */
+  background-color: #957060; /* Défini la couleur de fond en #957060 (brun rougeâtre) */
+  height: 50px; /* Défini la hauteur de l'en-tête à 50px */
+  padding: 10px 20px; /* Ajoute des marges de 10px à gauche et 20px à droite pour le contenu de l'en-tête */
+  margin-bottom: 20px; /* Ajoute un espace de 20px entre l'en-tête et le reste de la page */
+  font-size: 10px; /* Défini la taille de la police de caractères à 10px */
+}
+/* Éléments individuels de l'en-tête */
+.header > * {
+  width: 200px; /* Défini la largeur des éléments du header à 200px */
+}
+/* Barre de réseaux sociaux */
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.socials img {
+  height: 30px;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-western {
+  display: block;
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  height: 180px;
+}
+
+.banniere-liens {
+  margin-bottom: 20px;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navbar a {
+  color: #957060;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar a:hover {
+  color: #50413b;
+}
+
+.bando_tiag_img,
+.footer-img {
+  position: relative;
+  background-image: url("../images/font_botte_country.png");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: url(../images/fond.jpg) no-repeat contain #f9f3e7;
+  left: 50%;
+  transform: translate(0%, +50%);
+  font-family: "Rye", serif;
+  color: rgb(14, 14, 14);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.copyright {
+  position: relative;
+  height: 100px;
+  background-image: url(../images/fond.jpg) no-repeat contain #f9f3e7;
+}
+
+.copyright p {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translate(-50%, +50%);
+  color: white;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Dans votre fichier CSS externe (style.css) */
+.style-form {
+  margin: auto;
+  text-align: center;
+}
+
+.styleTable {
+  margin: auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+.styleTable th,
+.styleTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: #957060;
+}
+
+.styleTable th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  background-color: #957060;
+}
+th,
+td {
+  padding: 10px; /* Adjust the cell padding */
+  text-align: left; /* Align text to the left within cells */
+}
+
+/* Style the action column for better spacing */
+td a {
+  margin-right: 10px;
+}
+.edit-icon {
+  width: 50px;
+  height: 53px;
+}
+.style-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 4px;
+  cursor: pointer;
+}
+.fieldset {
+  margin-top: 30px;
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.conf {
+  margin-top: 100px; /* Ajustez la marge selon vos besoins */
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; /* Ajustez la largeur selon vos besoins */
+  text-align: center;
+  background-color: #957060;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+
+.buttons button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  font-size: 18px;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+.input input {
+  height: 25px;
+  width: 300px;
+}

@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Rye", serif;
+  background-color: #e3e3e3;
+}
+
+label {
+  width: 150px;
+}
+
+.container {
+  margin: auto;
+  max-width: 500px;
+  background-color: #775a4d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  padding: 20px;
+}
+
+textarea {
+  resize: vertical;
+  width: 177px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 177px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: row;
+}
+
+.obligatoire {
+  color: rgb(255, 0, 0);
+}
+
+.bouton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bouton input[type="submit"],
+.bouton button {
+  border: 5px solid #ffffff;
+
+  border-radius: 8px;
+}
+
+.cles {
+  height: 25px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.danger {
+  color: red;
+}
+h1 {
+  text-align: center;
+  font-family: "Rye", serif;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="submit"],
+select {
+  border-radius: 8px;
+  padding-left: 10px;
+}
