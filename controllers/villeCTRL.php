@@ -16,6 +16,7 @@ $dao = new VilleDAOPoo($pdo);
 // On sollicite la méthode selectAll du DAO et on récupère les villes
 $villes = $dao->selectAll();
 
+// Initialisation des variables à vide.
 $idVille = '';
 $cpVille = '';
 $nomVille = '';
