@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,700&family=Rye&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -18,7 +17,7 @@
     <div class="container">
         <fieldset>
 
-            <form action="../controllers/inscriptionCTRL.php" method="GET" class="form">
+            <form action="../controllers/inscriptionCTRL.php" method="POST" class="form">
                 <div class="titreformulaire">
 
                     <h1>Fiche d'inscription danse country 2024-2025</h1>
@@ -159,6 +158,6 @@
 
 
 </body>
-
+<?php include 'Footer.php'; ?>
 
 </html>

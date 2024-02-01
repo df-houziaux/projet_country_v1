@@ -11,6 +11,7 @@
  */
 class Connexion
 {
+    public $connexion = null;
 
     public function seConnecter(string $path): PDO
     {
@@ -33,5 +34,10 @@ class Connexion
             echo $exc->getMessage();
         }
         return $pdo;
+    }
+
+    public function __construct($path)
+    {
+        $this->connexion = $this->seConnecter($path);
     }
 }

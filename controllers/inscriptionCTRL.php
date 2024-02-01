@@ -1,45 +1,38 @@
 <?php
+
+declare(strict_types=1);
 // Inclusion du fichier de vérification des entrées
 include_once "../lib/verifInput.php";
+include_once "../daos/connexionBasique.php";
+include_once "../daos/villeDAO.php";
+
+$pdo = connectionWithIniFile("../conf/projet_country.ini");
 
 // Récupération des données du formulaire avec la méthode GET
-$civilite = filter_input(INPUT_GET, "civilite");
-$nom = filter_input(INPUT_GET, "nom");
-$prenom = filter_input(INPUT_GET, "prenom");
-$dateDeNaissance = filter_input(INPUT_GET, "date_de_naissance");
-$telephone = filter_input(INPUT_GET, "telephone");
-$email1 = filter_input(INPUT_GET, "email1");
-$email2 = filter_input(INPUT_GET, "email2");
-$mot_de_passe_1 = filter_input(INPUT_GET, "mot_de_passe_1");
-$mot_de_passe_2 = filter_input(INPUT_GET, "mot_de_passe_2");
-$adresse = filter_input(INPUT_GET, "adresse");
-$ville = filter_input(INPUT_GET, "ville");
-$cp = filter_input(INPUT_GET, "cp");
+$civilite        = filter_input(INPUT_POST, "civilite");
+$nom             = filter_input(INPUT_POST, "nom");
+$prenom          = filter_input(INPUT_POST, "prenom");
+$dateDeNaissance = filter_input(INPUT_POST, "date_de_naissance");
+$telephone       = filter_input(INPUT_POST, "telephone");
+$email1          = filter_input(INPUT_POST, "email1");
+$email2          = filter_input(INPUT_POST, "email2");
+$mot_de_passe_1  = filter_input(INPUT_POST, "mot_de_passe_1");
+$mot_de_passe_2  = filter_input(INPUT_POST, "mot_de_passe_2");
+$adresse         = filter_input(INPUT_POST, "adresse");
+$ville           = filter_input(INPUT_POST, "ville");
+$cp              = filter_input(INPUT_POST, "cp");
 
 $villeSelect = "";
 $cityResult = "";
 
 try {
-    // Connexion
-    $pdo = new PDO("mysql:host=localhost;port=3306;dbname=projet_country", "root", "");
-    // Les erreurs sont gérées comme des exceptions
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // bd <-> TUYAU <-> page
-    $pdo->exec("SET NAMES 'UTF8'");
-
     // Exécution du SELECT SQL
-    $select = "SELECT id_ville, nom_ville FROM ville";
-    $curseur = $pdo->query($select);
-    // curseur = tableau ordinal
-    //$curseur->setFetchMode(PDO::FETCH_NUM);
-    // On boucle sur les lignes en récupérant le contenu des colonnes 1 et 2
-    // curseur = tableau 2D , enr = tableau 1D
-    foreach ($curseur as $enregistrement) {
+    $list = selectAll($pdo);
+
+    foreach ($list as $enregistrement) {
         // Récupération des valeurs par concaténation et interpolation
-        $villeSelect .= "<option value='$enregistrement[0]'>$enregistrement[1]</option>\n";
+        $villeSelect .= "<option value='{$enregistrement["id_ville"]}'>{$enregistrement["nom_ville"]}</option>\n";
     }
-    // Fermeture du curseur (facultatif)
-    $curseur->closeCursor();
 }
 // Gestion des erreurs
 catch (PDOException $e) {
@@ -125,8 +118,6 @@ if ($email1 === null) {
     $motifLocal = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     $ok = preg_match($motifLocal, $email1);
 
-
-
     if ($ok === 1) {
         $messageok .= "E-mail : $email1 <br>";
     } else {
@@ -184,21 +175,12 @@ if ($cp == null) {
 }
 
 if (empty($messageko)) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "projet_country";
-
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $sql = "INSERT INTO adherent 
                 (nom_adherent, prenom_adherent, adresse, email, telephone, date_naissance, id_ville, password) 
         VALUES  (:nom, :prenom, :adresse, :email1, :tel, :dateDeNaissance, :id_ville, :mot_de_passe_1)";
 
-        $stmt = $conn->prepare($sql);
+        $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
@@ -213,7 +195,7 @@ if (empty($messageko)) {
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $conn = null;
+    seDeconnecter($pdo);
 }
 
 include '../views/inscription.php';

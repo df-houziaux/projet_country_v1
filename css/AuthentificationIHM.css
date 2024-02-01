@@ -1,11 +1,13 @@
 .container {
   margin: auto;
-  max-width: 500px;
+  max-width: 700px;
+  max-height: 600px;
   background-color: #775a4d;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 150px;
+  text-align: center;
 }
 
 fieldset {
@@ -24,31 +26,60 @@ table {
   width: 100%;
 }
 
-td {
-  padding: 5px;
+.bouton {
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 input[type="reset"],
 input[type="submit"] {
-  width: 48%;
+  width: 25%;
+  height: 40px; /* Ajuste la hauteur selon tes préférences */
   display: inline-block;
-  margin-right: 2%;
-  border-radius: 10px;
+  border-radius: 6px;
+  text-align: center;
 }
 
-.retour_acceuil {
+.retour_acceuil button,
+.btn_submit {
+  border-radius: 10px;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 6px;
+  display: inline-block;
+  width: 80px;
+}
+
+p {
   text-align: center;
-  margin-top: 10px;
-  border-radius: 10px;
+  color: red;
 }
-input[type="text"],
-input[type="password"],
-input[type="submit"],
-select {
-  border-radius: 10px;
+td a {
+  margin-top: 70px; /* Espace entre le champ de mot de passe et le lien oublié */
 }
-.bouton_accueil {
-  border-radius: 10px;
-  padding: 2px;
-  margin: 10px;
+/* Ajoute ces styles pour aligner les cases */
+table tr td {
+  vertical-align: middle;
+}
+
+/* Ajoute un peu de marge entre les deux cases */
+table tr td input[type="checkbox"] {
+  margin-right: 5px;
+}
+tr.password-reset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+tr.password-reset td {
+  flex: 1;
+}
+
+tr.password-reset a {
+  text-align: right;
 }

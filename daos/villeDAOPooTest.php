@@ -45,5 +45,5 @@ $villes = $villeDao->selectAll();
 
 // Affichage des informations de chaque ville
 foreach ($villes as $ville) {
-    echo "ID: {$ville->getIdVille()}, CP: {$ville->getCpVille()}, Nom: {$ville->getNomVille()} <br>";
+    echo "ID: {$ville->getNomAdherent()}, CP: {$ville->getCpVille()}, Nom: {$ville->getNomVille()} <br>";
 }

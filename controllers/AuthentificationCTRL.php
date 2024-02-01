@@ -7,9 +7,11 @@ header("Content-Type: text/html; charset=UTF-8");
 $message = "";
 
 $email = filter_input(INPUT_POST, "email");
-$mdp = filter_input(INPUT_POST, "mdp");
+$mdp = filter_input(INPUT_POST, "pass");
 
-if ($email != null && $mdp != null) {
+$btnSubmit = filter_input(INPUT_POST, "btValider");
+
+if ($btnSubmit && $email != null && $mdp != null) {
     try {
         /*
          * Connexion

@@ -1,4 +1,3 @@
-<!-- http://localhost/projet_country/controllers/villeCTRL.php -->
 <header class="header">
     <h2 class="contact">
         1 Rue du Maréchal Joffre

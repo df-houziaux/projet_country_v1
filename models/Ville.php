@@ -1,12 +1,8 @@
 <?php
-// Ville.php
+
 
 class Ville
-// liste des attributs,ils sont privés et typés (depuis php8)
-// les attribut sont privés pour qu onne puissse pas y accéder directement
-// mais inderectement via les setters ou contructeur en ecriture 
-// et que l on puisse justement via les settes et 
-// le contructeur controler les donnees entrantes
+
 {
     private int $idVille;
     private string $cpVille;
