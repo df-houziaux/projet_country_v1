@@ -46,6 +46,14 @@ select {
   display: flex;
   flex-direction: row;
 }
+.form-element.align-center {
+  align-items: flex-start; /* Aligner les éléments à gauche */
+  flex-direction: column; /* Aligner les éléments verticalement */
+}
+
+.form-element.align-center .check {
+  margin-top: 10px; /* Espacement entre le champ de confirmation du mot de passe et la checkbox */
+}
 
 .obligatoire {
   color: rgb(255, 0, 0);
@@ -67,10 +75,6 @@ select {
   height: 25px;
 }
 
-.align-center {
-  align-items: center;
-}
-
 .danger {
   color: red;
 }
@@ -87,4 +91,28 @@ input[type="submit"],
 select {
   border-radius: 8px;
   padding-left: 10px;
+}
+/* Ajoutez cette règle CSS pour définir l'animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-450%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Appliquez l'animation à votre popup */
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px; /* Ajustez la distance depuis le bas de la page selon vos préférences */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 9999;
+  animation: slideIn 1.4s forwards;
 }

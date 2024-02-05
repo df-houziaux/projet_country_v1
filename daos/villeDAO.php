@@ -44,7 +44,7 @@ Le nombre de lignes modifiées (par défaut et par principe 1 ou 0 ou une erreur
  * @param PDO $pdo
  * @return array
  */
-function selectAll(PDO $pdo): array
+function selectAllVille(PDO $pdo): array
 {
     /*
      * Renvoie un tableau ordinal de tableaux associatifs

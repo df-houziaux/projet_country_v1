@@ -18,7 +18,7 @@
     <div class="container">
         <fieldset>
             <h3>Authentification</h3>
-            <form action="../controllers/AuthentificationCTRL.php" method="POST" id="form-auth">
+            <form id="form-auth">
                 <table>
                     <tr>
                         <td>Email : </td>
@@ -28,28 +28,33 @@
                     </tr>
                     <tr>
                         <td>Mot de passe : </td>
-                        <td><input type="password" name="pass" id="pass" value="" /></td>
-                    <tr>
                         <td>
-                            <input type="checkbox" id="afficherMdp"> Afficher le mot de passe
+                            <input type="password" name="pass" id="pass" value="aZ1!00" />
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" id="afficherMdp">
+                            <label for="afficherMdp">Afficher le mot de passe</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="password_recovery.php">Mot de passe oublié</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="remember_me" id="remember_me" />
+                            <label for="remember_me">Se souvenir de moi</label>
+                        </td>
                     </tr>
 
-                    <tr>
-                        <td>Mot de passe oublié : </td>
-                        <td><a href="password_recovery.php">Mot de passe oublié</a></td>
-                    </tr>
-
-                    <tr>
-                        <td>Se souvenir de moi : </td>
-                        <td colspan="2"><input type="checkbox" name="remember_me" id="remember_me" /></td>
-                    </tr>
                     <tr>
                         <td colspan="2">
                             <div class="bouton">
                                 <input type="reset" value="Réinitialiser" name="btReinitialiser" id="btReinitialiser" />
-                                <button class="btn_submit" type="submit" value="Valider" name="btValider" id="btValider">Valider</button>
+                                <button class="btn_submit" type="button" value="Valider" name="btValider" id="btValider">Valider</button>
                             </div>
                         </td>
                     </tr>
@@ -57,6 +62,7 @@
             </form>
         </fieldset>
     </div>
+
     <p>
         <?php
         if (isset($message)) {
@@ -65,6 +71,10 @@
         ?>
     </p>
     <?php include 'Footer.php'; ?>
+
+    <div id="popup" class="popup">
+        <div class="popup-content" id="popup-content"></div>
+    </div>
 
     <script src="../js/Authentification.js"></script>
 </body>

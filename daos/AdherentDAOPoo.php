@@ -10,7 +10,7 @@ class AdherentDAOPoo
     }
 
     // AdherentDAOPoo.php
-    public function selectAll()
+    public function selectAllAdherent()
     {
         $sql = "SELECT * FROM adherent";
         $stmt = $this->pdo->query($sql);
@@ -125,59 +125,5 @@ class AdherentDAOPoo
         $stmt->bindValue(':password', $adherent->getPasswordAdherent());
         $stmt->bindValue(':id', $adherent->getIdAdherent(), PDO::PARAM_INT);
         $stmt->execute();
-    }
-
-    public function findUserByRememberToken($remember_token)
-    {
-        $sql = "SELECT * FROM adherent WHERE remember_token = :remember_token";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':remember_token', $remember_token);
-        $stmt->execute();
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
-    public function findUserByEmailAndPassword($email, $password)
-    {
-        $sql = "SELECT * FROM adherent WHERE email = :email AND password = :password";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':password', $password);
-        $stmt->execute();
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
-    public function createRememberToken()
-    {
-        // Générer un jeton unique
-        $rememberToken = uniqid('token_', true);
-
-        // Retourner le jeton
-        return $rememberToken;
-    }
-
-    public function storeRememberTokenForUser($user_id, $remember_token)
-    {
-        $sql = "UPDATE adherent SET remember_token = :remember_token WHERE id_adherent = :user_id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':remember_token', $remember_token);
-        $stmt->bindValue(':user_id', $user_id);
-
-        // Ajoutez ces messages de débogage
-        echo "Avant l'exécution de la requête\n";
-
-        if ($stmt->execute()) {
-            echo "Requête exécutée avec succès\n";
-            echo "Nombre de lignes affectées : " . $stmt->rowCount() . "\n";
-
-            if ($stmt->rowCount() == 0) {
-                echo "Aucune ligne mise à jour. Vérifiez si l'utilisateur avec ID $user_id existe.\n";
-            }
-        } else {
-            echo "Erreur lors de l'exécution de la requête : " . implode(", ", $stmt->errorInfo()) . "\n";
-        }
     }
 }

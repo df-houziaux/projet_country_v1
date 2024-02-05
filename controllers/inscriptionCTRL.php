@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Inclusion du fichier de vérification des entrées
 include_once "../lib/verifInput.php";
 include_once "../daos/connexionBasique.php";
-include_once "../daos/villeDAO.php";
+include_once "../daos/AdherentDAOPoo.php";
 
 $pdo = connectionWithIniFile("../conf/projet_country.ini");
 
@@ -12,12 +12,12 @@ $pdo = connectionWithIniFile("../conf/projet_country.ini");
 $civilite        = filter_input(INPUT_POST, "civilite");
 $nom             = filter_input(INPUT_POST, "nom");
 $prenom          = filter_input(INPUT_POST, "prenom");
-$dateDeNaissance = filter_input(INPUT_POST, "date_de_naissance");
+$dateDeNaissance = filter_input(INPUT_POST, "dateNaissance");
 $telephone       = filter_input(INPUT_POST, "telephone");
 $email1          = filter_input(INPUT_POST, "email1");
 $email2          = filter_input(INPUT_POST, "email2");
-$mot_de_passe_1  = filter_input(INPUT_POST, "mot_de_passe_1");
-$mot_de_passe_2  = filter_input(INPUT_POST, "mot_de_passe_2");
+$mot_de_passe_1  = filter_input(INPUT_POST, "mdp1");
+$mot_de_passe_2  = filter_input(INPUT_POST, "mdp2");
 $adresse         = filter_input(INPUT_POST, "adresse");
 $ville           = filter_input(INPUT_POST, "ville");
 $cp              = filter_input(INPUT_POST, "cp");
@@ -25,21 +25,6 @@ $cp              = filter_input(INPUT_POST, "cp");
 $villeSelect = "";
 $cityResult = "";
 
-try {
-    // Exécution du SELECT SQL
-    $list = selectAll($pdo);
-
-    foreach ($list as $enregistrement) {
-        // Récupération des valeurs par concaténation et interpolation
-        $villeSelect .= "<option value='{$enregistrement["id_ville"]}'>{$enregistrement["nom_ville"]}</option>\n";
-    }
-}
-// Gestion des erreurs
-catch (PDOException $e) {
-    // On affecte une constante littérale et on concatène le résultat de la méthode getMessage()
-    // de l'objet $e de la classe PDOException
-    $message = 'Echec de l\'exécution : ' . $e->getMessage();
-}
 // Initialisation des messages de succès et d'erreur
 $messageok = "";
 $messageko = "";
@@ -85,7 +70,7 @@ if ($dateDeNaissance == null) {
     $messageko .= "Veuillez saisir votre date de naissance. <br>";
 } else {
     // Validation de la date de naissance avec une expression régulière
-    $motif = "/^[0-9]{4}[\/\-\.]{1}[0-9]{2}[\/\-\.]{1}[0-9]{2}/";
+    $motif =  "/^\d{2}\/\d{2}\/\d{4}$/";
 
     $ok = preg_match($motif, $dateDeNaissance);
     if ($ok == 1) {
@@ -192,6 +177,9 @@ if (empty($messageko)) {
         $stmt->bindParam(':mot_de_passe_1', $mot_de_passe_1);
 
         $stmt->execute();
+
+
+        header("Location: ../views/AuthentificationIHM.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

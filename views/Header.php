@@ -9,6 +9,10 @@
         <br />
         Les 4 Saisons
     </h1>
+
+
+
+
     <ul class="socials">
 
         <a href="https://www.facebook.com/groups/325076983094241?locale=fr_FR">
@@ -19,6 +23,12 @@
         <a href="https://www.instagram.com">
             <img src="../images/social-media-app-logo-instagram.jpg" alt="Logo Instagram" />
         </a>
+        <div class="current-time">
+            <p id="time"></p>
+        </div>
+        <div class="logout-button">
+            <a href="logout.php">Déconnexion</a>
+        </div>
 
     </ul>
 </header>
@@ -37,3 +47,4 @@
     <a class="inscription" href="inscription.php">Inscription</a>
     <a class="inscription" href="../views/AuthentificationIHM.php">Authentification</a>
 </nav>
+<script src="../js/Header.js"></script>

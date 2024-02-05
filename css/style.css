@@ -137,3 +137,39 @@ footer {
   font-size: 15px;
   text-align: center;
 }
+/* Ajoutez ou modifiez ces styles */
+.logout-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.logout-button a {
+  color: black; /* Texte noir par défaut */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.logout-button a:hover {
+  color: rgb(249, 51, 51); /* Texte rouge au survol */
+}
+
+.current-time {
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 18px;
+  margin-right: 26px;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.socials img {
+  height: 30px;
+  margin-right: 10px;
+}

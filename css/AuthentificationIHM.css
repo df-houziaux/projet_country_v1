@@ -58,18 +58,21 @@ p {
   text-align: center;
   color: red;
 }
+
 td a {
   margin-top: 70px; /* Espace entre le champ de mot de passe et le lien oublié */
 }
+
 /* Ajoute ces styles pour aligner les cases */
 table tr td {
   vertical-align: middle;
 }
 
-/* Ajoute un peu de marge entre les deux cases */
-table tr td input[type="checkbox"] {
-  margin-right: 5px;
+table tr td {
+  vertical-align: top; /* Ajustement pour aligner les éléments en haut */
+  text-align: left; /* Ajustement pour aligner le texte à gauche */
 }
+
 tr.password-reset {
   display: flex;
   justify-content: space-between;
@@ -82,4 +85,9 @@ tr.password-reset td {
 
 tr.password-reset a {
   text-align: right;
+}
+
+label {
+  display: inline-block;
+  margin-left: 5px; /* Ajout de marge entre le checkbox et le texte */
 }

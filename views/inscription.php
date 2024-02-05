@@ -17,8 +17,8 @@
     <div class="container">
         <fieldset>
 
-            <form action="../controllers/inscriptionCTRL.php" method="POST" class="form">
-                <div class="titreformulaire">
+            <form action="../controllers/inscriptionCTRL.php" method="post" id="form" class="form">
+                <div class=" titreformulaire">
 
                     <h1>Fiche d'inscription danse country 2024-2025</h1>
                 </div>
@@ -30,7 +30,8 @@
                         <span>&nbsp;</span>
                         <input type="radio" id="madame" name="civilite" value="Madame">
                         <label for="madame">Madame</label>
-
+                        <input type="radio" id="autre" name="civilite" value="Autre">
+                        <label for="madame">Autre</label>
                         <span class="obligatoire">*</span>
                     </div>
                 </div>
@@ -52,9 +53,10 @@
                 </div>
 
                 <div class="form-element">
-                    <label for="date_de_naissance">Date de naissance:</label>
+                    <label for="dateNaissance">Date de naissance:</label>
                     <div>
-                        <input type="text" name="date_de_naissance" id="date_de_naissance" value="1973.12.26">
+                        <input type="text" name="dateNaissance" id="dateNaissance" value="26/12/1973">
+
                         <span class="obligatoire">*</span>
                     </div>
                 </div>
@@ -84,21 +86,30 @@
                 </div>
 
                 <div class="form-element">
-                    <label for="mot_de_passe_1">Mot de passe</label>
+                    <label for="mdp1">Mot de passe</label>
                     <div>
-                        <input type="password" name="mot_de_passe_1" id="mot_de_passe_1" value="Acc123">
+                        <input type="password" name="mdp1" id="mdp1" value="Acc123">
                         <span class="obligatoire">*</span>
                     </div>
                 </div>
 
-                <div class="form-element align-center">
-                    <label for="mot_de_passe_2">Comfirmez le mot de passe</label>
+                <div class="form-element">
+                    <label for="mdp2">Confirmez le mot de passe</label>
                     <div>
-                        <input type="password" name="mot_de_passe_2" id="mot_de_passe_2" value="Acc123">
+                        <input type="password" name="mdp2" id="mdp2" value="Acc123">
                         <span class="obligatoire">*</span>
                         <img class="cles" src="../images/cles.png" alt="Photo d'un trousseau de clés">
                     </div>
                 </div>
+
+                <div class="form-element">
+                    <label for="chkMdpVisible">Afficher le mot de passe</label>
+                    <div class="check">
+                        <input type="checkbox" id="chkMdpVisible" />
+                        <label id="lblMdpVisible" for="chkMdpVisible">Afficher le mot de passe</label>
+                    </div>
+                </div>
+
 
                 <div class="form-element">
                     <label for="adresse">Adresse</label>
@@ -112,8 +123,17 @@
                     <label for="ville">Ville</label>
                     <div>
                         <select name="ville" id="ville">
+                            <option value="">Choisir une ville</option>
                             <?php
-                            echo $villeSelect;
+                            include_once "../daos/connexionBasique.php";
+                            include_once "../daos/villeDAO.php";
+
+                            $pdo = connectionWithIniFile("../conf/projet_country.ini");
+
+                            $list = selectAllVille($pdo);
+                            foreach ($list as $enregistrement) {
+                                echo "<option value='{$enregistrement["id_ville"]}'>{$enregistrement["nom_ville"]}</option>\n";
+                            }
                             ?>
                         </select>
                         <span class="obligatoire">*</span>
@@ -129,7 +149,7 @@
                 </div>
                 <div class="bouton">
                     <div>
-                        <input type="submit" class="bouton" value="Valider" name="btSubmit" />
+                        <input type="submit" id="btSubmit" class="bouton" value="Valider" name="btSubmit" />
                     </div>
                     <div class="retour_acceuil">
                         <button type="button" class="r_acceuil" onclick="window.location.href='index.php'"> l'accueil</button>
@@ -137,7 +157,7 @@
                 </div>
             </form>
         </fieldset>
-
+        <label id="lblMessageJs"></label>
         <p>
             <?php
             if (isset($messageok)) {
@@ -155,9 +175,29 @@
             ?>
         </p>
     </div>
-
+    <script src="../js/inscricption.js"></script>
 
 </body>
 <?php include 'Footer.php'; ?>
+<div id="popup" class="popup">
+    <div class="popup-content" id="popup-content">
+        <p>
+            <?php
+            if (isset($messageok)) {
+                echo "<h2>Champs corrects</h2>";
+                echo "$messageok <br>";
+            }
+            ?>
+        </p>
+        <p>
+            <?php
+            if (isset($messageko)) {
+                echo "<h2>Champs incorrects</h2>";
+                echo "<p class=\"danger\">$messageko</p>";
+            }
+            ?>
+        </p>
+    </div>
+</div>
 
 </html>
