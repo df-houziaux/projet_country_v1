@@ -13,7 +13,7 @@ class VilleDAOPoo
         $this->pdo = $pdo;
     }
 
-    public function insert(Ville $ville): int
+    public function insertVille(Ville $ville): int
     {
         $affected = 0;
         try {
@@ -32,7 +32,7 @@ class VilleDAOPoo
         return $affected;
     }
 
-    public function delete(int $id): int
+    public function deleteVille(int $id): int
     {
         /**la méthode delete a un seul argument qui est l objet a géré
          * elle renvoie un int qui est le nombre de ligne suppriméé dans la table
@@ -67,7 +67,7 @@ class VilleDAOPoo
     * La méthode UPDATE reçoit en parametre un objet et a un retour de type int(le nombre de lignes modifiées)
     */
 
-    public function update(Ville $villes): int
+    public function updateVille(Ville $villes): int
     {
         $affected = 0;
         try {
@@ -95,7 +95,7 @@ class VilleDAOPoo
         }
         return $affected;
     }
-    public function selectOne(int $ville): Ville
+    public function selectOneVille(int $ville): Ville
     {
         try {
             $cursor = $this->pdo->prepare("SELECT * FROM ville WHERE id_ville = ?");
@@ -119,7 +119,7 @@ class VilleDAOPoo
 
         return $ville;
     }
-    public function selectall(): array
+    public function selectAllVille(): array
     {
         try {
             // Initialiser un tableau pour stocker les objets Ville

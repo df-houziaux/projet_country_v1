@@ -35,14 +35,7 @@ class AdherentDAOPoo
         return $adherents;
     }
 
-    public function selectAllVilles()
-    {
-        $sql = "SELECT * FROM ville";
-        $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function selectOne($id)
+    public function selectOneAdherent($id)
     {
         $sql = "SELECT * FROM adherent WHERE id_adherent = :id";
         $stmt = $this->pdo->prepare($sql);
@@ -76,15 +69,23 @@ class AdherentDAOPoo
         return $adherent;
     }
 
-    public function delete($id)
+    public function deleteAdherent($id)
     {
         $sql = "DELETE FROM adherent WHERE id_adherent = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
+
+        $affectedRows = $stmt->rowCount();
+
+        $response = array();
+        $response['message'] = "$affectedRows enregistrement(s) supprimé(s)";
+
+        return json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 
-    public function insert($adherent)
+
+    public function insertAdherent($adherent)
     {
         $sql = "INSERT INTO adherent (nom_adherent, prenom_adherent, adresse, email, telephone, date_naissance, id_ville, password)
                 VALUES (:nom, :prenom, :adresse, :email, :telephone, :date_naissance, :id_ville, :password)";
@@ -101,7 +102,7 @@ class AdherentDAOPoo
         $stmt->execute();
     }
 
-    public function update($adherent)
+    public function updateAdherent($adherent)
     {
         $sql = "UPDATE adherent
                 SET nom_adherent    = :nom, 
