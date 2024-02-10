@@ -123,10 +123,10 @@ function afficherPopup(message, erreur = false) {
     popup.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
   } else {
     popup.style.backgroundColor = "rgba(119, 90, 70, 0.8)";
-    // Redirection vers la page d'authentification après confirmation
-    // setTimeout(function () {
-    //   window.location.href = "AuthentificationIHM.php";
-    // }, 3000); // La popup disparaîtra après 3 secondes
+    //Redirection vers la page d'authentification après confirmation
+    setTimeout(function () {
+      window.location.href = "../Authentification/AuthentificationIHM.php";
+    }, 3000); // La popup disparaîtra après 3 secondes
   }
 
   popup.style.display = "block";
