@@ -10,15 +10,11 @@
         Les 4 Saisons
     </h1>
 
-
-
-
     <ul class="socials">
 
         <a href="https://www.facebook.com/groups/325076983094241?locale=fr_FR">
             <img src="../../images/face-book-logo.jpeg" alt="Logo Facebook" />
         </a>
-
 
         <a href="https://www.instagram.com">
             <img src="../../images/social-media-app-logo-instagram.jpg" alt="Logo Instagram" />
@@ -42,7 +38,7 @@
     <a class="news" href="#news">A la une</a>
     <a class="menbres" href="#membres">Membres</a>
     <a class="evenements" href="#evenements">Evènements</a>
-    <a class="ct_mu" href="Contenu_multimedia.php">Contenu multimédia</a>
+    <a class="ct_mu" href="galerie.php">Contenu multimédia</a>
     <a class="fichiers" href="#fichiers">Fichiers</a>
     <a class="inscription" href="inscription.php">Inscription</a>
     <a class="inscription" href="./Authentification/AuthentificationIHM.php">Authentification</a>
