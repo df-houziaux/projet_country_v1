@@ -13,7 +13,9 @@
 </head>
 
 <body>
-    <?php include "Header.php"; ?>
+    <?php
+
+    include "Header.php"; ?>
     <div class="container">
         <fieldset>
 
@@ -88,7 +90,7 @@
                 <div class="form-element">
                     <label for="mdp1">Mot de passe</label>
                     <div>
-                        <input type="password" name="mdp1" id="mdp1" value="Acc123">
+                        <input type="password" name="mdp1" id="mdp1" value="Acc123!">
                         <span class="obligatoire">*</span>
                     </div>
                 </div>
@@ -96,7 +98,7 @@
                 <div class="form-element">
                     <label for="mdp2">Confirmez le mot de passe</label>
                     <div>
-                        <input type="password" name="mdp2" id="mdp2" value="Acc123">
+                        <input type="password" name="mdp2" id="mdp2" value="Acc123!">
                         <span class="obligatoire">*</span>
                         <img class="cles" src="../images/cles.png" alt="Photo d'un trousseau de clés">
                     </div>
@@ -125,15 +127,21 @@
                         <select name="ville" id="ville">
                             <option value="">Choisir une ville</option>
                             <?php
-                            include_once "../daos/connexionBasique.php";
-                            include_once "../daos/villeDAO.php";
+                            include_once "../daos/Connexion.php";
+                            include_once "../daos/VilleDAOPoo.php";
 
-                            $pdo = connectionWithIniFile("../conf/projet_country.ini");
+                            $connexion = new Connexion();
 
-                            $list = selectAllVille($pdo);
-                            foreach ($list as $enregistrement) {
-                                echo "<option value='{$enregistrement["id_ville"]}'>{$enregistrement["nom_ville"]}</option>\n";
+                            $pdo = $connexion->seConnecter("projet_country.ini");
+
+                            $villeDAO = new VilleDAOPoo($pdo);
+
+                            $listVilles = $villeDAO->selectAllVille();
+
+                            foreach ($listVilles as $ville) {
+                                echo "<option value='" . $ville->getIdVille() . "'>" . $ville->getNomVille() . "</option>\n";
                             }
+
                             ?>
                         </select>
                         <span class="obligatoire">*</span>
@@ -157,47 +165,15 @@
                 </div>
             </form>
         </fieldset>
-        <label id="lblMessageJs"></label>
-        <p>
-            <?php
-            if (isset($messageok)) {
-                echo "<h2>Champs corrects</h2>";
-                echo "$messageok <br>";
-            }
-            ?>
-        </p>
-        <p>
-            <?php
-            if (isset($messageko)) {
-                echo "<h2>Champs incorrects</h2>";
-                echo "<p class=\"danger\">$messageko</p>";
-            }
-            ?>
-        </p>
     </div>
-    <script src="../js/inscricption.js"></script>
+    <script src="../js/inscription.js"></script>
 
-</body>
-<?php include 'Footer.php'; ?>
-<div id="popup" class="popup">
-    <div class="popup-content" id="popup-content">
-        <p>
-            <?php
-            if (isset($messageok)) {
-                echo "<h2>Champs corrects</h2>";
-                echo "$messageok <br>";
-            }
-            ?>
-        </p>
-        <p>
-            <?php
-            if (isset($messageko)) {
-                echo "<h2>Champs incorrects</h2>";
-                echo "<p class=\"danger\">$messageko</p>";
-            }
-            ?>
-        </p>
+    <?php include 'Footer.php'; ?>
+
+
+    <div id="popup" class="popup">
+        <div class="popup-content" id="popup-content"></div>
     </div>
-</div>
+</body>
 
 </html>

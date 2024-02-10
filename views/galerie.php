@@ -22,11 +22,11 @@
   <div>
     <button id="importButton">Importer</button>
     <button id="downloadButton">Télécharger</button>
-    <button id="homeButton">Accueil</button>
+    <a href="index.php">Accueil</a>
   </div>
 
   <!-- Liens pour sélectionner le type de média -->
-  <div class="dossiers">
+  <div class=" dossiers">
     <a href="#" class="showFolder" data-folder="Bal">Bal</a>
     <a href="#" class="showFolder" data-folder="Cours">Cours</a>
     <a href="#" class="showFolder" data-folder="Démos">Démos</a>

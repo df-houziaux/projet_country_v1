@@ -45,7 +45,8 @@ input[type="submit"] {
 }
 
 .retour_acceuil button,
-.btn_submit {
+.btn_submit,
+.btReset {
   border-radius: 10px;
   cursor: pointer;
   height: 40px;

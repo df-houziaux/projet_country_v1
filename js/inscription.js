@@ -103,18 +103,10 @@ function mdpVisible() {
 
 document.getElementById("chkMdpVisible").addEventListener("change", mdpVisible);
 
-document.addEventListener("DOMContentLoaded", function () {
-  var selectVille = document.getElementById("ville");
-  villes.forEach(function (ville) {
-    var option = document.createElement("option");
-    option.value = ville.id;
-    option.textContent = ville.nom;
-    selectVille.appendChild(option);
-  });
-});
-
 function afficherPopup(message, erreur = false) {
   const popup = document.getElementById("popup");
+
+  console.log(popup);
   const popupContent = document.getElementById("popup-content");
 
   popupContent.innerHTML = message;
@@ -125,26 +117,18 @@ function afficherPopup(message, erreur = false) {
     popup.style.backgroundColor = "rgba(119, 90, 70, 0.8)";
     //Redirection vers la page d'authentification après confirmation
     setTimeout(function () {
-      window.location.href = "../Authentification/AuthentificationIHM.php";
-    }, 3000); // La popup disparaîtra après 3 secondes
+      window.location.href = "authentification.php";
+    }, 4000); // La popup disparaîtra après 3 secondes
   }
 
   popup.style.display = "block";
-
-  setTimeout(function () {
-    popup.style.display = "none";
-  }, 3000); // La popup disparaîtra après 3 secondes
 }
 
 formulaireInscription.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const formulaireValide = validerInformations();
-
   if (formulaireValide === true) {
-    console.log("le formulaire est valide");
     this.submit();
-  } else {
-    console.log("Le formulaire est invalide");
   }
 });

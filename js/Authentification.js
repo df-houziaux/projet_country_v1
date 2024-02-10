@@ -1,15 +1,29 @@
+// Champs du formulaire
+const email = document.getElementById("email");
+const password = document.getElementById("pass");
+
+// Formulaire
+const formAuth = document.getElementById("form-auth");
+
+// Boutons
+const btnAfficher = document.getElementById("afficherMdp");
+const btnReset = document.querySelector(".btReset");
+const btnValider = document.getElementById("btValider");
+
+// Popup
+const popup = document.getElementById("popup");
+const popupContent = document.getElementById("popup-content");
+
+// Validation du formulaire
 function validerAuthentification() {
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const regexPassword =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{6,}$/;
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("pass").value.trim();
-
   let erreurs = 0;
   let message = "";
 
-  if (!regexEmail.test(email)) {
+  if (!regexEmail.test(email.value)) {
     message += "Veuillez saisir une adresse e-mail valide.<br>";
     erreurs++;
   }
@@ -19,7 +33,7 @@ function validerAuthentification() {
     erreurs++;
   }
 
-  if (!regexPassword.test(password)) {
+  if (!regexPassword.test(password.value)) {
     message += "Le mot de passe ne respecte pas les critères de sécurité.<br>";
     erreurs++;
   }
@@ -35,6 +49,7 @@ function validerAuthentification() {
   }
 }
 
+// Rendre visible le mot de passe
 function togglePasswordVisibility() {
   var passwordInput = document.getElementById("pass");
   if (passwordInput.type === "password") {
@@ -44,14 +59,8 @@ function togglePasswordVisibility() {
   }
 }
 
-document
-  .getElementById("afficherMdp")
-  .addEventListener("click", togglePasswordVisibility);
-
+// Afficher le PopUP
 function afficherPopup(message, erreur = false) {
-  const popup = document.getElementById("popup");
-  const popupContent = document.getElementById("popup-content");
-
   popupContent.innerHTML = message;
 
   if (erreur) {
@@ -67,6 +76,27 @@ function afficherPopup(message, erreur = false) {
   }, 3000); // La popup disparaîtra après 3 secondes
 }
 
-document
-  .getElementById("btValider")
-  .addEventListener("click", validerAuthentification);
+// Affiche le mot de passe en clair quand on appuie sur la coche "Afficher le mot de passe"
+btnAfficher.addEventListener("click", togglePasswordVisibility);
+
+// Réinitialisation des champs du formulaire
+btnReset.addEventListener("click", (event) => {
+  // Eviter le rafraichissement par défaut de la page
+  event.preventDefault();
+  email.value = "";
+  password.value = "";
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  formAuth.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formulaireValide = validerAuthentification();
+
+    console.log(formulaireValide);
+
+    if (formulaireValide === true) {
+      formAuth.submit();
+    }
+  });
+});

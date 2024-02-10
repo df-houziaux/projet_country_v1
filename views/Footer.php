@@ -6,7 +6,7 @@
         </p>
     </div>
     <div>
-        <img class="footer_img" src="../../images/fond.jpg" alt="Chevaux et vaches" />
+        <img class="footer_img" src="http://localhost/projetPersoM2I/projet_country/images/fond.jpg" alt="Chevaux et vaches" />
     </div>
 
 </footer>

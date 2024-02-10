@@ -1,7 +1,5 @@
 <?php
 
-// AuthentificationCTRL.php
-file: ///c%3A/xampp/htdocs/projet_country/views/Header.php
 header("Content-Type: text/html; charset=UTF-8");
 
 $message = "";
@@ -35,7 +33,7 @@ if ($btnSubmit && $email != null && $mdp != null) {
         if ($enregistrement === FALSE) {
             $message = "KO, vous n'êtes pas connecté(e)";
         } else {
-            $message = "0K, vous êtes connecté(e)";
+            $message = "OK, vous êtes connecté(e)";
         }
         $curseur->closeCursor();
     } catch (PDOException $e) {
@@ -46,4 +44,4 @@ if ($btnSubmit && $email != null && $mdp != null) {
     $message = "Toutes les saisies sont obligatoires !!!";
 }
 
-include "../views/Authentification/AuthentificationIHM.php";
+include "../views/authentification.php";

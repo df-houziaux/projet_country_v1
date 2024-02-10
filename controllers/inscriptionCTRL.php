@@ -3,10 +3,15 @@
 declare(strict_types=1);
 // Inclusion du fichier de vérification des entrées
 include_once "../lib/verifInput.php";
-include_once "../daos/connexionBasique.php";
+include_once "../daos/Connexion.php";
+
+include_once "../models/Adherent.php";
 include_once "../daos/AdherentDAOPoo.php";
 
-$pdo = connectionWithIniFile("../conf/projet_country.ini");
+$connexion = new Connexion();
+$pdo = $connexion->seConnecter("projet_country.ini");
+
+$adherentDAO = new AdherentDAOPoo($pdo);
 
 // Récupération des données du formulaire avec la méthode GET
 $civilite        = filter_input(INPUT_POST, "civilite");
@@ -161,29 +166,16 @@ if ($cp == null) {
 
 if (empty($messageko)) {
     try {
-        $sql = "INSERT INTO adherent 
-                (nom_adherent, prenom_adherent, adresse, email, telephone, date_naissance, id_ville, password) 
-        VALUES  (:nom, :prenom, :adresse, :email1, :tel, :dateDeNaissance, :id_ville, :mot_de_passe_1)";
 
-        $stmt = $pdo->prepare($sql);
+        $adherent = new Adherent(0, $nom, $prenom, $adresse, $email1, $telephone, $dateDeNaissance, $ville, $mot_de_passe_1);
 
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $prenom);
-        $stmt->bindParam(':adresse', $adresse);
-        $stmt->bindParam(':email1', $email1);
-        $stmt->bindParam(':tel', $telephone);
-        $stmt->bindParam(':dateDeNaissance', $dateDeNaissance);
-        $stmt->bindParam(':id_ville', $ville);
-        $stmt->bindParam(':mot_de_passe_1', $mot_de_passe_1);
+        $adherentDAO->insertAdherent($adherent);
 
-        $stmt->execute();
-
-
-        header("Location: ../views/AuthentificationIHM.php");
+        header("Location: ../views/authentification.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    seDeconnecter($pdo);
+    $pdo = null;
 }
 
 include '../views/inscription.php';
