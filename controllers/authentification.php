@@ -46,4 +46,4 @@ if ($btnSubmit && $email != null && $mdp != null) {
     $message = "Toutes les saisies sont obligatoires !!!";
 }
 
-include "../views/AuthentificationIHM.php";
+include "../views/Authentification/AuthentificationIHM.php";
