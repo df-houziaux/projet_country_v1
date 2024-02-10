@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_accueil.css">
-    <title>Delete View</title>
+    <title>Delete adherent </title>
 </head>
 <header>
     <?php
@@ -16,10 +16,10 @@
 
 <body>
     <fieldset>
-        <legend>Delete</legend>
-        <form method="POST" action="../controllers/villedeleteCTRLPoo.php" class="inscription">
-            <label for="id_ville">Id Ville</label>
-            <input type="text" name="id_ville" id="id_ville">
+        <legend>Delete un Adherent</legend>
+        <form method="get" action="../controllers/AdherentDeleteCTRLGET.php" class="inscription">
+            <label for="id_adherent">Id adherent</label>
+            <input type="text" name="id_adherent" id="id_adherent">
 
             <input type="submit" name="btSubmit" value="Supprimer" />
         </form>

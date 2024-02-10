@@ -16,12 +16,12 @@
     <ul class="socials">
 
         <a href="https://www.facebook.com/groups/325076983094241?locale=fr_FR">
-            <img src="../images/face-book-logo.jpeg" alt="Logo Facebook" />
+            <img src="../../images/face-book-logo.jpeg" alt="Logo Facebook" />
         </a>
 
 
         <a href="https://www.instagram.com">
-            <img src="../images/social-media-app-logo-instagram.jpg" alt="Logo Instagram" />
+            <img src="../../images/social-media-app-logo-instagram.jpg" alt="Logo Instagram" />
         </a>
         <div class="current-time">
             <p id="time"></p>
@@ -34,7 +34,7 @@
 </header>
 
 <div class="images">
-    <img src="../images/logoswestern.png" alt="centre social" class="logo-western" />
+    <img src="../../images/logoswestern.png" alt="centre social" class="logo-western" />
 </div>
 
 <nav class="navbar">
@@ -45,6 +45,6 @@
     <a class="ct_mu" href="Contenu_multimedia.php">Contenu multimédia</a>
     <a class="fichiers" href="#fichiers">Fichiers</a>
     <a class="inscription" href="inscription.php">Inscription</a>
-    <a class="inscription" href="../views/AuthentificationIHM.php">Authentification</a>
+    <a class="inscription" href="./Authentification/AuthentificationIHM.php">Authentification</a>
 </nav>
-<script src="../js/Header.js"></script>
+<script src="../../js/Header.js"></script>

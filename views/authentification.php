@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Authentification</title>
-    <link rel="stylesheet" href="../css/AuthentificationIHM.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/AuthentificationIHM.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,700&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php include "Header.php"; ?>
+    <?php include "../Header.php"; ?>
     <div class="container">
         <fieldset>
             <h3>Authentification</h3>
@@ -70,13 +70,13 @@
         }
         ?>
     </p>
-    <?php include 'Footer.php'; ?>
+    <?php include '../Footer.php'; ?>
 
     <div id="popup" class="popup">
         <div class="popup-content" id="popup-content"></div>
     </div>
 
-    <script src="../js/Authentification.js"></script>
+    <script src="../../js/Authentification.js"></script>
 </body>
 
 </html>
