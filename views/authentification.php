@@ -6,6 +6,9 @@
     <title>Authentification</title>
     <link rel="stylesheet" href="../css/authentification.css">
     <link rel="stylesheet" href="../css/style.css">
+
+    <script defer src="../js/Authentification.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,700&display=swap" rel="stylesheet" />
@@ -16,15 +19,16 @@
 <body>
     <?php include "Header.php"; ?>
 
-    <div>
-        <p></p>
-
-    </div>
-
+    <?php
+    // Display the error message if present
+    if (!empty($message)) {
+        echo '<div class="error-message">' . htmlspecialchars($message) . '</div>';
+    }
+    ?>
     <div class="container">
         <fieldset>
             <h3>Authentification</h3>
-            <form action="../controllers/authentificationCTRL.php" method="post" id="form-auth">
+            <form action="../controllers/authentificationCTRL.php" method="get" id="form-auth">
                 <table>
                     <tr>
                         <td>Email : </td>
@@ -75,7 +79,6 @@
         <div class="popup-content" id="popup-content"></div>
     </div>
 
-    <script src="../js/Authentification.js"></script>
 </body>
 
 </html>

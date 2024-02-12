@@ -6,7 +6,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 150px;
+  margin-top: 120px;
   text-align: center;
 }
 
@@ -44,7 +44,14 @@ input[type="submit"] {
   text-align: center;
 }
 
-.retour_acceuil button,
+input[type="text"],
+input[type="password"] {
+  width: 200px;
+  border-radius: 6px;
+  padding: 6px 6px;
+}
+
+input[type="email"] .retour_acceuil button,
 .btn_submit,
 .btReset {
   border-radius: 10px;
@@ -91,4 +98,15 @@ tr.password-reset a {
 label {
   display: inline-block;
   margin-left: 5px; /* Ajout de marge entre le checkbox et le texte */
+}
+
+.error-message {
+  display: block;
+  margin: auto;
+  text-align: center;
+  background-color: rgb(155, 15, 15);
+  color: #fff;
+  width: 300px;
+  padding: 20px 10px;
+  border-radius: 5px;
 }

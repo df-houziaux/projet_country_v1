@@ -39,8 +39,10 @@
     <a class="menbres" href="#membres">Membres</a>
     <a class="evenements" href="#evenements">Evènements</a>
     <a class="ct_mu" href="http://localhost/projetPersoM2I/projet_country/views/galerie.php">Contenu multimédia</a>
-    <a class="fichiers" href="#fichiers">Fichiers</a>
+    <a class="fichiers" href="fichiers.php">Fichiers</a>
     <a class="inscription" href="inscription.php">Inscription</a>
     <a class="inscription" href="authentification.php">Authentification</a>
+    <a class="mon-compte" href="monCompte.php">Mon Compte</a>
+
 </nav>
 <script src="../js/Header.js"></script>

@@ -1,3 +1,9 @@
+<?php
+// Check if the success parameter is present in the URL
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+  echo '<div class="success-message">Vous êtes connecté(e) avec succès !</div>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +33,7 @@
 
     <?php include 'Footer.php'; ?>
   </div>
+  <script src="../js/index.js"></script>
 </body>
 
 </html>

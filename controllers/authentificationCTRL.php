@@ -4,10 +4,10 @@ header("Content-Type: text/html; charset=UTF-8");
 
 $message = "";
 
-$email = filter_input(INPUT_POST, "email");
-$mdp = filter_input(INPUT_POST, "pass");
+$email = filter_input(INPUT_GET, "email");
+$mdp = filter_input(INPUT_GET, "pass");
 
-$btnSubmit = filter_input(INPUT_POST, "btValider");
+$btnSubmit = filter_input(INPUT_GET, "btValider");
 
 if ($btnSubmit && $email != null && $mdp != null) {
     try {
@@ -30,10 +30,13 @@ if ($btnSubmit && $email != null && $mdp != null) {
         // Récupération ou pas d'un enregistrement
         // http://php.net/manual/fr/pdostatement.fetch.php
         $enregistrement = $curseur->fetch();
+
         if ($enregistrement === FALSE) {
-            $message = "KO, vous n'êtes pas connecté(e)";
+            $message = "Email ou mot de passe incorrect";
         } else {
-            $message = "OK, vous êtes connecté(e)";
+            $message = "Connecté avec succès";
+            header("Location: ../views/index.php?success=1");
+            exit;
         }
         $curseur->closeCursor();
     } catch (PDOException $e) {

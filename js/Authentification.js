@@ -8,7 +8,6 @@ const formAuth = document.getElementById("form-auth");
 // Boutons
 const btnAfficher = document.getElementById("afficherMdp");
 const btnReset = document.querySelector(".btReset");
-const btnValider = document.getElementById("btValider");
 
 // Popup
 const popup = document.getElementById("popup");
@@ -39,13 +38,9 @@ function validerAuthentification() {
   }
 
   if (erreurs > 0) {
-    afficherPopup(message, true);
+    return false;
   } else {
-    afficherPopup("Le formulaire est valide", false);
-    // Redirection vers la page d'index après confirmation
-    setTimeout(function () {
-      window.location.href = "../views/index.php";
-    }, 3000); // La popup disparaîtra après 3 secondes
+    return true;
   }
 }
 
@@ -57,23 +52,6 @@ function togglePasswordVisibility() {
   } else {
     passwordInput.type = "password";
   }
-}
-
-// Afficher le PopUP
-function afficherPopup(message, erreur = false) {
-  popupContent.innerHTML = message;
-
-  if (erreur) {
-    popup.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
-  } else {
-    popup.style.backgroundColor = "rgba(119, 90, 70, 0.8)";
-  }
-
-  popup.style.display = "block";
-
-  setTimeout(function () {
-    popup.style.display = "none";
-  }, 3000); // La popup disparaîtra après 3 secondes
 }
 
 // Affiche le mot de passe en clair quand on appuie sur la coche "Afficher le mot de passe"
@@ -88,14 +66,10 @@ btnReset.addEventListener("click", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  formAuth.addEventListener("submit", (event) => {
-    event.preventDefault();
-
+  formAuth.addEventListener("submit", () => {
     const formulaireValide = validerAuthentification();
 
-    console.log(formulaireValide);
-
-    if (formulaireValide === true) {
+    if (formulaireValide) {
       formAuth.submit();
     }
   });

@@ -173,3 +173,11 @@ footer {
   height: 30px;
   margin-right: 10px;
 }
+
+.success-message {
+  display: block;
+  margin: auto;
+  text-align: center;
+  background-color: rgb(6, 118, 45);
+  color: #fff;
+}

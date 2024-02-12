@@ -1,0 +1,43 @@
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+.container {
+  background-color: #957060;
+}
+.search-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input[type="text"] {
+  padding: 6px;
+  width: 200px;
+}
+
+/* Style pour redimensionner les images */
+.small-image {
+  max-width: 50px;
+  /* Largeur maximale de l'image */
+  height: auto;
+  /* Hauteur ajustée automatiquement pour préserver les proportions */
+}
