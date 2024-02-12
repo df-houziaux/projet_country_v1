@@ -35,7 +35,11 @@ if ($btnSubmit && $email != null && $mdp != null) {
             $message = "Email ou mot de passe incorrect";
         } else {
             $message = "Connecté avec succès";
-            header("Location: ../views/index.php?success=1");
+
+            $adherent_id = $enregistrement['id_adherent'];
+            setcookie('adherent_id', $adherent_id, time() + (86400 * 30), "/");
+
+            // header("Location: ../views/index.php?success=1");
             exit;
         }
         $curseur->closeCursor();

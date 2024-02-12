@@ -1,3 +1,24 @@
+<?php
+
+include_once "../daos/Connexion.php";
+include_once "../models/Adherent.php";
+include_once "../daos/AdherentDAOPoo.php";
+
+$connexion = new Connexion();
+$pdo = $connexion->seConnecter("projet_country.ini");
+
+$adherentDAO = new AdherentDAOPoo($pdo);
+
+$adherent = $adherentDAO->selectOneAdherent($_COOKIE['adherent_id']);
+
+// ID ville : $adherent->getIdVille()
+// Select one sur VIlle ($villeDAO->selectOneVille($idville))
+
+// nom ville $ville->getNomville()
+// code postal $ville->getCodePostal()
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,32 +47,33 @@
             <form id="profil-form" action="../controllers/miseAJourProfil.php" method="post">
 
                 <input type="hidden" name="id_adherent" value="<?php echo $id; ?>">
+
                 <label for="nouvelle_photo">Photo de profil :</label><br>
                 <input type="file" id="nouvelle_photo" name="nouvelle_photo" accept="image/*"><br>
 
-                <label for="nouveau_nom">Nouveau nom :</label><br>
-                <input type="text" id="nouveau_nom" name="nouveau_nom"><br>
+                <label for="nouveau_nom">Nom :</label><br>
+                <input type="text" id="nouveau_nom" name="nouveau_nom" value="<?= $adherent->getNomAdherent() ?>" readonly><br>
 
-                <label for="nouveau_prenom">Nouveau prénom :</label><br>
-                <input type="text" id="nouveau_prenom" name="nouveau_prenom"><br>
+                <label for="nouveau_prenom">Prénom :</label><br>
+                <input type="text" id="nouveau_prenom" name="nouveau_prenom" value="<?= $adherent->getPrenomAdherent() ?>" readonly><br>
 
-                <label for="nouvelle_date_naissance">Nouvelle Date de naissance :</label><br>
-                <input type="date" id="nouvelle_date_naissance" name="nouvelle_date_naissance"><br>
+                <label for="nouvelle_date_naissance">Date de naissance :</label><br>
+                <input type="text" id="nouvelle_date_naissance" name="nouvelle_date_naissance" value="<?= $adherent->getDateNaissanceAdherent() ?>" readonly><br>
 
-                <label for="nouveau_telephone">Nouveau Téléphone :</label><br>
-                <input type="tel" id="nouveau_telephone" name="nouveau_telephone"><br>
+                <label for="nouveau_telephone">Téléphone :</label><br>
+                <input type="tel" id="nouveau_telephone" name="nouveau_telephone" value="<?= $adherent->getTelephoneAdherent() ?>" readonly><br>
 
-                <label for="nouvelle_email">Nouvelle Email :</label><br>
-                <input type="email" id="nouvelle_email" name="nouvelle_email"><br>
+                <label for="nouvelle_email">Email :</label><br>
+                <input type="email" id="nouvelle_email" name="nouvelle_email" value="<?= $adherent->getEmailAdherent() ?>" readonly><br>
 
-                <label for="nouvelle_adresse">Nouvelle Adresse :</label><br>
-                <input type="text" id="nouvelle_adresse" name="nouvelle_adresse"><br>
+                <label for="nouvelle_adresse">Adresse :</label><br>
+                <input type="text" id="nouvelle_adresse" name="nouvelle_adresse" value="<?= $adherent->getAdresseAdherent() ?>" readonly><br>
 
-                <label for="nouvelle_ville">Nouvelle Ville :</label><br>
-                <input type="text" id="nouvelle_ville" name="nouvelle_ville"><br>
+                <label for="nouvelle_ville">Ville :</label><br>
+                <input type="text" id="nouvelle_ville" name="nouvelle_ville" value="A faire" readonly><br>
 
-                <label for="nouveau_code_postal">Nouveau Code postal :</label><br>
-                <input type="text" id="nouveau_code_postal" name="nouveau_code_postal"><br>
+                <label for="nouveau_code_postal">Code postal :</label><br>
+                <input type="text" id="nouveau_code_postal" name="nouveau_code_postal" value="A faire" readonly><br>
 
                 <button type="submit" name="update-profile">Mettre à jour le profil</button>
             </form>
